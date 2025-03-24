@@ -1,0 +1,52 @@
+<script>
+function checkConditions(number, stringValue, array) {
+    if (
+        number % 3 == 0 && number % 5 == 0 &&
+        containsUpperAndLowerCase(stringValue) &&
+        array.length > 5
+    ) {
+        return "Super Complex Match!";
+    }
+
+    else if (
+        prime(number) &&
+        palindrome(stringValue) &&
+        array.slice(0, 3).reduce((acc, val) => acc + val, 0) % 2 == 0
+    ) {
+        return "Prime-Palindrome-Even Combo!";
+    }
+
+    else if (number > 100 && duplicates(array)) {
+        return "Big number with duplicates found";
+    }
+
+    return "No match";
+}
+
+function isPrime(num) {
+    if (num <= 1) return false; 
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i == 0) return false; 
+    }
+    return true; 
+}
+
+function containsUpperAndLowerCase(str) {
+    const hasUpperCase =/[A-Z]/.test(str); 
+    const hasLowerCase = [a-z]/.test(str); 
+    return hasUpperCase && hasLowerCase;
+}
+
+
+function  palindrome(str) {
+    const lowerCaseStr = str.toLowerCase();
+    return lowerCaseStr = lowerCaseStr.split("").reverse().join(""); 
+}
+
+function  duplicates(arr) {
+    const uniqueElements = new Set(arr); 
+    return uniqueElements.size != arr.length; 
+    
+}
+</script>
+
